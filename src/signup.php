@@ -25,9 +25,11 @@
      $res = pg_query($conn,$sql);
 
      if ($res){
-     echo "User has been created succesfully";
+          //echo "User has been created succesfully";
+          echo"<script>alert(User has been created . Go to login!)";
+          header('Refesch:0; url=http://localhost/Schoolar/src/signup.html');
      }else{
-     echo "Error";
+          echo "Error";
      } 
      }
 

@@ -20,6 +20,6 @@
     <link rel="icon" type="image/png" href="src/icons/academic.png">
 </head>
 <body>
-   <a href="src/signin.html">Logout; - &nbsp; 
+   <a href="signin.html">Logout;  &nbsp; 
 </body>
 </html> 

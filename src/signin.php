@@ -5,7 +5,7 @@
      session_start();
 
      if(isset($_SESSION['user_id'])){
-        header('Refesch:0; url=http://localhost/Schoolar/src/home.php');
+        header('Refesch:0; url=http://localhost/schoolar/src/home.php');
      }
 
 
@@ -35,7 +35,7 @@
        if($row['total'] > 0){
        //echo " Login OK";
        $_SESSION['user_id'] = $row['id'];
-       header('Refresh:0; URL=http://localhost/Schoolar/src/home.php');
+       header('Refresh:0; URL=http://localhost/schoolar/src/home.php');
       }else{
         echo"Login failed";
        }

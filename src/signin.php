@@ -15,27 +15,27 @@
      $enc_pass = sha1($passw);
 
      $sql = "
-     SELECT 
-               --id, 
-               --email, 
-               --password, 
-                COUNT(id) as total
-     from 
-               users 
-     where 
-               email = '$email' and 
-               password ='$passw' and 
-               status = true 
-               id;";
+        SELECT 
+            id,
+            COUNT(id) as total
+        FROM 
+            users
+        WHERE
+            email = '$email' and
+            password = '$enc_pass' and
+            status = true
+        GROUP BY
+            id
+    ";
 
     $res = pg_query($conn,$sql);
 
     if($res){
-        $row = pg_fetch_assoC($res);
+        $row = pg_fetch_assoc($res);
        if($row['total'] > 0){
        //echo " Login OK";
-       $_SESSION['user_id'] = $conn['id']
-       header('Refesch:0; url=http://localhost/Schoolar/src/home.php');
+       $_SESSION['user_id'] = $row['id'];
+       header('Refresh:0; URL=http://localhost/Schoolar/src/home.php');
       }else{
         echo"Login failed";
        }

@@ -32,11 +32,11 @@
 
     if($res){
         $row = pg_fetch_assoC($res);
-       if($row['total'] > 0)
+       if($row['total'] > 0){
        //echo " Login OK";
        $_SESSION['user_id'] = $conn['id']
        header('Refesch:0; url=http://localhost/Schoolar/src/home.php');
-       else{
+      }else{
         echo"Login failed";
        }
     }   

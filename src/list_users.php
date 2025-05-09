@@ -13,24 +13,35 @@
         <tr>
             <th>FristName </th>
             <th>LastName </th>
-            <th>E-mail </th>
+            <th>email </th>
             <th>status </th>
             <th>.... </th>
         </tr>
-        <tr>
-            <td>Andres</td>
-            <td>Malua </td>
-            <td>malu@mail.com </td>
-            <td>Active </td>
-            <td>
-            <img src="images/edit.png" width="15">
-            <img src="images/trash.png" width="15">
-            <img src="images/lupa.png" width="15">
-            </td>
-        </tr>
+       
         <?php
          //Here code
-         $sql = "";
+         $sql = "SELECT firstname , lastname ,email , case when status = true then 'Active' else ' No active ' end as status
+                 from users
+                 ";
+          $res = pg_query($conn,$sql);
+          if(!$res){
+            echo "Query error";
+            exit;
+
+          }
+          while($row = pg_fetch_assoc($res)){
+            echo"<tr>";
+            echo"<td>". $row['firstname']."</td>";
+            echo"<td>". $row['lastname']."</td>";
+            echo"<td>". $row['email']."</td>";
+            echo"<td>". $row['status']."</td>";
+            echo"<td>";
+            echo"<a href = ''><img src='images/edit.png' width='18'></a>";
+            echo"<a href = ''><img src='images/trash.png' width='18'></a>";
+            echo"<a href = ''><img src='images/lupa.png' width='18'></a>";
+            echo"</td>";
+            echo"</tr>";
+          }     
         ?>            
 </body>
 </html>

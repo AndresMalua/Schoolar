@@ -15,12 +15,13 @@
             <th>LastName </th>
             <th>email </th>
             <th>status </th>
+            <th>Photo </th>
             <th>.... </th>
         </tr>
        
         <?php
          //Here code
-         $sql = "SELECT firstname , lastname ,email , case when status = true then 'Active' else ' No active ' end as status
+         $sql = "SELECT id,firstname , lastname ,email , case when status = true then 'Active' else ' No active ' end as status
                  from users
                  ";
           $res = pg_query($conn,$sql);
@@ -36,8 +37,11 @@
             echo"<td>". $row['email']."</td>";
             echo"<td>". $row['status']."</td>";
             echo"<td>";
+            echo"<a href = ''><img src='photo_users/photo_default.png' width='25'></a>";
+            echo"</td>";
+            echo"<td>";
             echo"<a href = ''><img src='images/edit.png' width='18'></a>";
-            echo"<a href = ''><img src='images/trash.png' width='18'></a>";
+            echo"<a href = 'http://localhost/schoolar/src/delete.php'><img src='images/trash.png' width='18'></a>";
             echo"<a href = ''><img src='images/lupa.png' width='18'></a>";
             echo"</td>";
             echo"</tr>";
